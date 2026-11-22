@@ -1,0 +1,31 @@
+@use "../abstracts" as *;
+
+// Bouton rose
+
+// Bouton rose (198 × 55).
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 198px;
+	height: 55px;
+	padding: 0 16px;
+	border: 0;
+	border-radius: 5px;
+	font-family: var(--font);
+	font-size: 15px;
+	color: var(--white);
+	text-decoration: none;
+	background: var(--pink-button);
+	cursor: pointer;
+	transition: background-color 0.25s, transform 0.25s var(--ease);
+
+	&:hover,
+	&:focus-visible {
+		background: var(--red-hover);
+	}
+
+	&:active {
+		transform: scale(0.97);
+	}
+}

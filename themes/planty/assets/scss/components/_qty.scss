@@ -1,0 +1,42 @@
+@use "../abstracts" as *;
+
+// Quantité avec boutons + / − (ajoutés en JS)
+
+.qty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 15px;
+
+	.order-taste__qty {
+		margin: 0;
+	}
+
+	&__btn {
+		display: grid;
+		place-items: center;
+		width: 34px;
+		height: 34px;
+		padding: 0;
+		border: 1px solid var(--white);
+		border-radius: 50%;
+		font-family: var(--font);
+		font-size: 20px;
+		line-height: 1;
+		color: var(--white);
+		background: transparent;
+		cursor: pointer;
+		transition: background-color 0.2s, color 0.2s;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--green);
+			background: var(--white);
+		}
+
+		&[hidden] {
+			display: none;
+		}
+	}
+}

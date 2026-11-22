@@ -1,0 +1,12 @@
+{
+  "name": "planty",
+  "private": true,
+  "description": "Outils de développement du thème Planty (compilation Sass).",
+  "scripts": {
+    "sass": "sass --no-source-map --style=expanded themes/planty/assets/scss/main.scss themes/planty/assets/css/main.css",
+    "sass:watch": "sass --no-source-map --style=expanded --watch themes/planty/assets/scss/main.scss themes/planty/assets/css/main.css"
+  },
+  "devDependencies": {
+    "sass": "1.108.1"
+  }
+}

@@ -1,0 +1,15 @@
+# Dépôt placé dans wp-content : on ne suit que le thème, l'extension et les outils.
+/*
+!/.gitignore
+!/README.md
+!/package.json
+!/package-lock.json
+!/docs/
+!/themes/
+/themes/*
+!/themes/planty/
+!/plugins/
+/plugins/*
+!/plugins/planty-core/
+
+node_modules/

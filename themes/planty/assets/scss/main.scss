@@ -1,0 +1,45 @@
+/* ============================================================
+   Planty — feuille de styles principale (Sass, architecture 7-1)
+   Intégration de la maquette Figma (Accueil, Nous rencontrer, Commander).
+
+   abstracts/   Variables Sass et mixins (ne génèrent pas de CSS)
+   base/        Couleurs (:root), polices, réinitialisation, titres, animations
+   components/  Bouton, formulaires, quantité, rangée de canettes
+   layout/      En-tête, pied de page, sections
+   pages/       Accueil, Nous rencontrer, Commander, pages simples
+
+   Le responsive est écrit dans chaque fichier, juste sous le style
+   ordinateur (@include tablet / medium / mobile).
+
+   ⚠ Ne modifie pas assets/css/main.css à la main : il est généré.
+   Compile depuis la racine du dépôt :
+     npm run sass        (une fois)
+     npm run sass:watch  (recompile à chaque enregistrement)
+   ============================================================ */
+
+// Base
+@use "base/root";
+@use "base/fonts";
+@use "base/reset";
+@use "base/utilities";
+@use "base/typography";
+
+// Layout
+@use "layout/header";
+@use "layout/footer";
+@use "layout/sections";
+
+// Components
+@use "components/buttons";
+@use "components/forms";
+@use "components/qty";
+@use "components/cans";
+
+// Pages
+@use "pages/home";
+@use "pages/meet";
+@use "pages/order";
+@use "pages/page";
+
+// Animations en dernier : elles s'appliquent par-dessus le reste.
+@use "base/animations";

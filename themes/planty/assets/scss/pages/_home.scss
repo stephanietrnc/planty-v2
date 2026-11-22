@@ -1,0 +1,287 @@
+@use "../abstracts" as *;
+
+// Accueil
+
+// En-tête : titre + canette entre deux branches.
+.hero {
+	position: relative;
+	z-index: 1;
+	padding-top: 105px;
+	text-align: center;
+
+	&__title {
+		font-size: 38px;
+		font-weight: 800;
+		line-height: 46px;
+		text-transform: uppercase;
+		color: var(--green);
+	}
+
+	// Scène de 698 × 618 (de x371 à x1069 dans la maquette), proportionnelle sur petit écran.
+	&__stage {
+		position: relative;
+		width: min(698px, 92vw);
+		aspect-ratio: 698 / 618;
+		margin: 52px auto -19px;
+	}
+
+	&__item {
+		position: absolute;
+
+		&--left,
+		&--right {
+			top: 22.8%;
+			width: 50%;
+		}
+
+		&--left {
+			left: 0;
+		}
+
+		&--right {
+			left: 50%;
+		}
+
+		&--can {
+			top: 0;
+			left: 23.57%;
+			width: 55.44%;
+		}
+	}
+
+	&__float {
+		width: 100%;
+	}
+
+	@include mobile {
+		padding-top: 56px;
+
+		&__title {
+			font-size: 26px;
+			line-height: 1.2;
+		}
+
+		&__stage {
+			margin-top: 32px;
+		}
+	}
+}
+
+// « L'énergie des plantes ».
+.band--energy {
+	@include curve-top(57px);
+	padding: 130px 24px 82px;
+	text-align: center;
+
+	.energy__text {
+		max-width: 470px; // coupe le texte sur 5 lignes comme la maquette
+		margin: 47px auto 0;
+		font-size: 20px;
+	}
+
+	@include mobile {
+		padding: 72px 24px 64px;
+
+		.energy__text {
+			margin-top: 24px;
+			font-size: 18px;
+		}
+	}
+}
+
+// Les goûts.
+.tastes {
+	padding: 58px 24px 29px;
+	text-align: center;
+
+	&__text {
+		margin-top: 7px;
+		font-size: 20px;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 393px);
+		gap: 40px 30px;
+		justify-content: center;
+		margin: 49px 0 47px;
+	}
+
+	@include medium {
+		&__grid {
+			grid-template-columns: minmax(0, 393px);
+			gap: 24px;
+		}
+	}
+
+	@include mobile {
+		padding-top: 48px;
+
+		&__text {
+			font-size: 18px;
+		}
+
+		&__grid {
+			margin: 32px 0;
+		}
+	}
+}
+
+.taste {
+	position: relative;
+	aspect-ratio: 393 / 262;
+	overflow: hidden;
+
+	&__img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.7s var(--ease);
+	}
+
+	&__name {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 48px;
+		font-weight: 800;
+		line-height: normal;
+		color: var(--white);
+		text-transform: uppercase;
+		pointer-events: none;
+	}
+
+	&:hover &__img {
+		transform: scale(1.08);
+	}
+
+	@include mobile {
+		&__name {
+			font-size: 40px;
+		}
+	}
+}
+
+// Avis.
+.band--reviews {
+	@include curve-top(17.8px);
+	padding-top: 133px;
+
+	.reviews {
+		display: grid;
+		grid-template-columns: repeat(3, 345px);
+		gap: 68px;
+		justify-content: center;
+		margin: 84px 0 115px;
+		padding: 0 24px;
+	}
+
+	@include tablet {
+		.reviews {
+			grid-template-columns: minmax(0, 345px);
+			gap: 40px;
+		}
+	}
+
+	@include mobile {
+		padding-top: 72px;
+
+		.reviews {
+			margin: 48px 0 72px;
+		}
+	}
+}
+
+.review {
+	display: flex;
+	gap: 21px;
+
+	&__photo {
+		flex: none;
+		width: 126px;
+		height: 139px;
+		object-fit: contain;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		padding-top: 18px;
+	}
+
+	&__name {
+		order: -1;
+		margin-bottom: 11px;
+		font-size: 30px;
+		font-weight: 700;
+		color: var(--green);
+	}
+
+	&__text {
+		width: 196px;
+		font-size: 16px;
+	}
+}
+
+// Goût cliquable : couleur du goût au survol + « Commander ce goût ».
+.taste__link {
+	position: relative;
+	display: block;
+	height: 100%;
+	color: var(--white);
+	text-decoration: none;
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: var(--gout, var(--green));
+		opacity: 0;
+		transition: opacity 0.4s var(--ease);
+	}
+
+	.taste__name {
+		z-index: 1;
+	}
+
+	&:hover::after,
+	&:focus-visible::after {
+		opacity: 0.45;
+	}
+
+	&:focus-visible {
+		outline-offset: -6px;
+		outline-color: var(--white);
+	}
+}
+
+.taste__cta {
+	position: absolute;
+	bottom: 18px;
+	left: 50%;
+	z-index: 1;
+	padding: 8px 16px;
+	border-radius: 999px;
+	font-size: 15px;
+	font-weight: 700;
+	white-space: nowrap;
+	color: var(--black);
+	background: var(--white);
+	opacity: 0;
+	transform: translate(-50%, 8px);
+	transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+
+	.taste__link:hover &,
+	.taste__link:focus-visible & {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+
+	// Écrans tactiles : pas de survol, le bouton reste visible.
+	@media (hover: none) {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+}

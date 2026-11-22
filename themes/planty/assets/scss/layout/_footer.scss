@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+
+// Pied de page
+
+.site-footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 60px;
+	padding: 0 24px;
+	background: var(--white);
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 32px;
+		justify-content: center;
+	}
+
+	a {
+		font-size: 16px;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

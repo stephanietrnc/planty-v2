@@ -1,0 +1,44 @@
+@use "sass:math";
+@use "variables" as *;
+
+// Mixins : points de rupture, animations, bord en arc.
+
+@mixin tablet {
+	@media (max-width: $bp-tablet) {
+		@content;
+	}
+}
+
+@mixin medium {
+	@media (max-width: $bp-medium) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: $bp-mobile) {
+		@content;
+	}
+}
+
+// Animations seulement si le visiteur n'a pas demandé moins de mouvement.
+@mixin motion {
+	@media (prefers-reduced-motion: no-preference) {
+		@content;
+	}
+}
+
+// Bord supérieur en arc d'une section blanche : la section crème du dessus « déborde ».
+// $depth = creux au centre dans la maquette ; il diminue avec la largeur de l'écran.
+@mixin curve-top($depth) {
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: -1px 0 auto; // -1 px : évite un liseré blanc entre les deux sections
+		height: calc(min(#{$depth}, #{math.div($depth, 1440px) * 100vw}) + 1px);
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0C0 0 5 100 722.5 100C1440 100 1440 0 1440 0Z' fill='%23ece2da'/%3E%3C/svg%3E") no-repeat top / 100% 100%;
+		pointer-events: none;
+	}
+}

@@ -1,0 +1,214 @@
+@use "../abstracts" as *;
+
+// En-tête et menu
+
+.site-header {
+	position: relative;
+	z-index: 20;
+	display: flex;
+	align-items: center;
+	height: var(--header-h);
+	padding-left: 37px;
+	background: var(--white);
+
+	&__logo {
+		display: block;
+		flex: none;
+	}
+
+	&__img {
+		width: 201px;
+		height: auto;
+	}
+
+	@include mobile {
+		height: 64px;
+		padding-left: 20px;
+
+		&__img {
+			width: 150px;
+		}
+	}
+}
+
+.nav {
+	align-self: stretch;
+	margin-left: auto;
+
+	&__list {
+		display: flex;
+		align-items: stretch;
+		height: 100%;
+	}
+
+	.menu-item {
+		display: flex;
+
+		> a {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 0 30px;
+			font-size: 16px;
+			text-align: center;
+			text-decoration: none;
+			white-space: nowrap;
+
+			// Copie invisible du texte en gras : réserve la largeur, le menu ne bouge pas au survol.
+			&[data-text]::after {
+				content: attr(data-text);
+				height: 0;
+				overflow: hidden;
+				font-weight: 700;
+				visibility: hidden;
+			}
+		}
+
+		&:not(.bouton) > a:hover,
+		&.est-actif:not(.bouton) > a {
+			font-weight: 700;
+		}
+	}
+
+	// Bouton rose « Commander » collé à droite.
+	.bouton {
+		margin-left: 30px;
+
+		> a {
+			justify-content: center;
+			width: 236px;
+			font-weight: 700;
+			color: var(--white);
+			background: var(--pink-nav);
+			transition: background-color 0.25s;
+
+			&:hover,
+			&:focus-visible {
+				background: var(--red-hover);
+			}
+		}
+	}
+
+	// Mobile : menu déroulant sous l'en-tête.
+	@include mobile {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		left: 0;
+		margin: 0;
+		background: var(--white);
+		box-shadow: 0 12px 20px rgba(0, 0, 0, 0.06);
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(-8px);
+		transition: opacity 0.25s, transform 0.25s, visibility 0s 0.25s;
+
+		&.is-open {
+			visibility: visible;
+			opacity: 1;
+			transform: none;
+			transition: opacity 0.25s, transform 0.25s;
+		}
+
+		&__list {
+			flex-direction: column;
+			height: auto;
+		}
+
+		.menu-item > a {
+			justify-content: center;
+			width: 100%;
+			min-height: 56px;
+		}
+
+		.bouton {
+			margin: 0;
+
+			> a {
+				width: 100%;
+			}
+		}
+	}
+}
+
+// Bouton du menu mobile (trois traits → croix).
+.nav-toggle {
+	display: none;
+
+	@include mobile {
+		position: relative;
+		display: block;
+		width: 64px;
+		height: 64px;
+		margin-left: auto;
+		padding: 0;
+		border: 0;
+		background: var(--pink-nav);
+		cursor: pointer;
+
+		&__bar,
+		&__bar::before,
+		&__bar::after {
+			position: absolute;
+			left: 50%;
+			width: 24px;
+			height: 2px;
+			margin-left: -12px;
+			background: var(--white);
+			transition: transform 0.25s, opacity 0.25s;
+		}
+
+		&__bar {
+			top: 31px;
+
+			&::before,
+			&::after {
+				content: "";
+				left: 0;
+				margin: 0;
+			}
+
+			&::before {
+				top: -8px;
+			}
+
+			&::after {
+				top: 8px;
+			}
+		}
+
+		&[aria-expanded="true"] .nav-toggle__bar {
+			background: transparent;
+
+			&::before {
+				transform: translateY(8px) rotate(45deg);
+			}
+
+			&::after {
+				transform: translateY(-8px) rotate(-45deg);
+			}
+		}
+	}
+}
+
+// Sans JS, le menu mobile reste visible sous le logo.
+html:not(.js) {
+	@include mobile {
+		.site-header {
+			flex-wrap: wrap;
+			height: auto;
+		}
+
+		.nav {
+			position: static;
+			flex-basis: 100%;
+			visibility: visible;
+			opacity: 1;
+			transform: none;
+		}
+
+		.nav-toggle {
+			display: none;
+		}
+	}
+}

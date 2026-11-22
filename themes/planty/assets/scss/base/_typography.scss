@@ -1,0 +1,46 @@
+@use "../abstracts" as *;
+
+// Titres de section et texte de l'éditeur
+
+// Titres de section.
+.title {
+	font-size: 30px;
+	text-align: center;
+
+	&--green,
+	&--pink {
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	&--green,
+	&--green-bold {
+		color: var(--green);
+	}
+
+	&--green-bold,
+	&--black {
+		font-weight: 700;
+	}
+
+	&--pink {
+		color: var(--pink-title);
+	}
+
+	@include mobile {
+		font-size: 24px;
+	}
+}
+
+.prose {
+	font-size: 18px;
+	line-height: 1.6;
+
+	> * + * {
+		margin-top: 1em;
+	}
+
+	a {
+		color: var(--green);
+	}
+}

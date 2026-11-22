@@ -1,0 +1,240 @@
+@use "../abstracts" as *;
+
+// Commander
+
+// Page Commander (fond vert).
+.page-template-template-commander {
+	background: var(--green);
+}
+
+.order {
+	width: min(860px, calc(100% - 48px));
+	margin: 0 auto;
+	padding: 69px 0 93px;
+	color: var(--white);
+
+	&__title {
+		padding-bottom: 69px;
+		border-bottom: 1px solid var(--white);
+		font-size: 38px;
+		font-weight: 800;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	:where(fieldset) {
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+
+	&__legend {
+		float: left; // permet de placer la légende comme un titre normal
+		width: 100%;
+		padding: 0;
+		font-size: 30px;
+		font-weight: 700;
+
+		+ * {
+			clear: both;
+		}
+	}
+
+	&__tastes {
+		padding: 40px 0 39px;
+		border-bottom: 1px solid var(--white);
+
+		.order__legend {
+			margin-bottom: 39px;
+		}
+
+		> .field__error {
+			margin: -24px 0 24px;
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 193px));
+		justify-content: space-between;
+		gap: 24px;
+	}
+
+	&__columns {
+		display: grid;
+		grid-template-columns: 383px 383px;
+		justify-content: space-between;
+		margin-top: 53px;
+		background: linear-gradient(var(--white), var(--white)) no-repeat center 2px / 1px calc(100% - 2px);
+	}
+
+	&__group {
+		.order__legend {
+			margin-bottom: 29px;
+		}
+
+		.field + .field {
+			margin-top: 30px;
+		}
+	}
+
+	.field__label {
+		color: var(--white);
+	}
+
+	.form__actions {
+		margin-top: 44px;
+	}
+
+	.form-notice {
+		margin: 32px 0 0;
+	}
+
+	@include medium {
+		&__grid {
+			grid-template-columns: repeat(2, minmax(0, 193px));
+			justify-content: center;
+		}
+
+		&__columns {
+			grid-template-columns: minmax(0, 383px);
+			gap: 48px;
+			justify-content: center;
+			background: none;
+		}
+	}
+
+	@include mobile {
+		padding-top: 48px;
+
+		&__title {
+			padding-bottom: 40px;
+			font-size: 28px;
+		}
+
+		&__legend {
+			font-size: 24px;
+		}
+	}
+}
+
+.order-taste {
+	text-align: center;
+
+	&__visual {
+		position: relative;
+		aspect-ratio: 193 / 129;
+		overflow: hidden;
+	}
+
+	&__img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.6s var(--ease);
+	}
+
+	&:hover &__img {
+		transform: scale(1.08);
+	}
+
+	&__name {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+		font-weight: 800;
+		line-height: normal;
+		text-transform: uppercase;
+		pointer-events: none;
+	}
+
+	// Case de quantité (39 × 56).
+	&__qty {
+		width: 39px;
+		height: 56px;
+		margin: 15px auto 0;
+		padding: 0;
+		border: 0;
+		font-family: var(--font-qty);
+		font-size: 16px;
+		text-align: center;
+		color: var(--black);
+		background: var(--white);
+		appearance: textfield;
+		-moz-appearance: textfield;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			margin: 0;
+			appearance: none;
+		}
+
+		&:focus {
+			outline: 3px solid var(--pink-nav);
+			outline-offset: 2px;
+		}
+	}
+}
+
+// Couleur du goût au survol de la vignette.
+.order-taste__visual::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--gout, var(--green));
+	opacity: 0;
+	transition: opacity 0.4s var(--ease);
+	pointer-events: none;
+}
+
+.order-taste:hover .order-taste__visual::after {
+	opacity: 0.45;
+}
+
+.order-taste__name {
+	z-index: 1;
+}
+
+// Récapitulatif en direct.
+.order__summary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 14px;
+	align-items: center;
+	margin-top: 32px;
+	font-size: 18px;
+}
+
+.order__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.order__chip {
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
+	padding: 6px 12px;
+	border-radius: 999px;
+	font-size: 16px;
+	background: rgba(255, 255, 255, 0.15);
+
+	&::before {
+		content: "";
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: var(--gout, var(--white));
+		box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+	}
+}
+
+.order__total {
+	margin-left: auto;
+	font-size: 22px;
+}

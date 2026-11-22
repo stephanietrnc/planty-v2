@@ -1,0 +1,15 @@
+@use "../abstracts" as *;
+
+// Rangée de canettes (bas de page)
+
+.cans {
+	--cans-w: 1288px; // largeur de l'image : 14 canettes entières (boucle du défilement)
+	height: 131px;
+	background: url("../img/canettes.webp") repeat-x 0 100% / auto 131px;
+
+	@include mobile {
+		--cans-w: calc(1288px * 90 / 131);
+		height: 90px;
+		background-size: auto 90px;
+	}
+}
