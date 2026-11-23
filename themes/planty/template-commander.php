@@ -18,7 +18,7 @@ while ( have_posts() ) :
 	?>
 
 	<section class="order" id="commande">
-		<h1 class="order__title" data-reveal><?php the_title(); ?></h1>
+		<h1 class="page-title order__title" data-reveal><?php the_title(); ?></h1>
 
 		<?php if ( $planty_state ) : ?>
 			<form<?php echo planty_mod( 'demo_mode' ) ? ' data-demo' : ''; ?> class="form form--order" action="<?php echo esc_url( planty_mod( 'demo_mode' ) ? '#' : admin_url( 'admin-post.php' ) ); ?>" method="post" novalidate>

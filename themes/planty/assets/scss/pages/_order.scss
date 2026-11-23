@@ -8,18 +8,14 @@
 }
 
 .order {
-	width: min(860px, calc(100% - 48px));
+	width: min(860px, calc(100% - 2 * var(--gutter)));
 	margin: 0 auto;
-	padding: 69px 0 93px;
+	padding: fluid(40px, 69px) 0 fluid(56px, 93px);
 	color: var(--white);
 
 	&__title {
-		padding-bottom: 69px;
+		padding-bottom: fluid(32px, 69px);
 		border-bottom: 1px solid var(--white);
-		font-size: 38px;
-		font-weight: 800;
-		text-align: center;
-		text-transform: uppercase;
 	}
 
 	:where(fieldset) {
@@ -33,7 +29,7 @@
 		float: left; // permet de placer la légende comme un titre normal
 		width: 100%;
 		padding: 0;
-		font-size: 30px;
+		font-size: fluid(22px, 30px);
 		font-weight: 700;
 
 		+ * {
@@ -42,11 +38,11 @@
 	}
 
 	&__tastes {
-		padding: 40px 0 39px;
+		padding: fluid(28px, 40px) 0 fluid(28px, 39px);
 		border-bottom: 1px solid var(--white);
 
 		.order__legend {
-			margin-bottom: 39px;
+			margin-bottom: fluid(20px, 39px);
 		}
 
 		> .field__error {
@@ -58,24 +54,24 @@
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 193px));
 		justify-content: space-between;
-		gap: 24px;
+		gap: fluid(16px, 24px);
 	}
 
 	&__columns {
 		display: grid;
 		grid-template-columns: 383px 383px;
 		justify-content: space-between;
-		margin-top: 53px;
+		margin-top: fluid(32px, 53px);
 		background: linear-gradient(var(--white), var(--white)) no-repeat center 2px / 1px calc(100% - 2px);
 	}
 
 	&__group {
 		.order__legend {
-			margin-bottom: 29px;
+			margin-bottom: fluid(16px, 29px);
 		}
 
 		.field + .field {
-			margin-top: 30px;
+			margin-top: fluid(20px, 30px);
 		}
 	}
 
@@ -84,7 +80,7 @@
 	}
 
 	.form__actions {
-		margin-top: 44px;
+		margin-top: fluid(32px, 44px);
 	}
 
 	.form-notice {
@@ -99,24 +95,12 @@
 
 		&__columns {
 			grid-template-columns: minmax(0, 383px);
-			gap: 48px;
+			gap: fluid(32px, 48px);
 			justify-content: center;
 			background: none;
 		}
 	}
 
-	@include mobile {
-		padding-top: 48px;
-
-		&__title {
-			padding-bottom: 40px;
-			font-size: 28px;
-		}
-
-		&__legend {
-			font-size: 24px;
-		}
-	}
 }
 
 .order-taste {
@@ -145,7 +129,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 20px;
+		font-size: fluid(15px, 20px);
 		font-weight: 800;
 		line-height: normal;
 		text-transform: uppercase;
@@ -160,7 +144,7 @@
 		padding: 0;
 		border: 0;
 		font-family: var(--font-qty);
-		font-size: 16px;
+		font-size: rem(16px);
 		text-align: center;
 		color: var(--black);
 		background: var(--white);
@@ -205,8 +189,8 @@
 	flex-wrap: wrap;
 	gap: 10px 14px;
 	align-items: center;
-	margin-top: 32px;
-	font-size: 18px;
+	margin-top: fluid(24px, 32px);
+	font-size: fluid(16px, 18px);
 }
 
 .order__chips {
@@ -221,7 +205,7 @@
 	align-items: center;
 	padding: 6px 12px;
 	border-radius: 999px;
-	font-size: 16px;
+	font-size: rem(16px);
 	background: rgba(255, 255, 255, 0.15);
 
 	&::before {
@@ -236,5 +220,10 @@
 
 .order__total {
 	margin-left: auto;
-	font-size: 22px;
+	font-size: fluid(18px, 22px);
+}
+
+// Sur le fond vert, contour de focus blanc (le rouge ne se verrait pas assez).
+.order :focus-visible {
+	outline-color: var(--white);
 }

@@ -1,28 +1,29 @@
 @use "../abstracts" as *;
 
 // Accueil
+// Tailles et espacements fluides : valeurs de la maquette à 1440 px, réduites jusqu'à 320 px.
 
-// En-tête : titre + canette entre deux branches.
+// ---------- En-tête : titre + canette entre deux branches ----------
 .hero {
 	position: relative;
 	z-index: 1;
-	padding-top: 105px;
+	padding: fluid(40px, 105px) var(--gutter) 0;
 	text-align: center;
 
 	&__title {
-		font-size: 38px;
-		font-weight: 800;
-		line-height: 46px;
-		text-transform: uppercase;
 		color: var(--green);
 	}
 
 	// Scène de 698 × 618 (de x371 à x1069 dans la maquette), proportionnelle sur petit écran.
 	&__stage {
 		position: relative;
-		width: min(698px, 92vw);
+		width: min(698px, 100%);
 		aspect-ratio: 698 / 618;
-		margin: 52px auto -19px;
+		margin: fluid(24px, 52px) auto 0;
+		// La canette déborde de 19 px sur la section suivante à 1440 px (l'arc blanc
+		// en dessous fait 57 px de creux) ; sur petit écran l'arc s'aplatit,
+		// donc on lui laisse de l'espace à la place (11 px à 320 px).
+		margin-bottom: calc(20px - min(39px, 2.7vw));
 	}
 
 	&__item {
@@ -52,78 +53,36 @@
 	&__float {
 		width: 100%;
 	}
-
-	@include mobile {
-		padding-top: 56px;
-
-		&__title {
-			font-size: 26px;
-			line-height: 1.2;
-		}
-
-		&__stage {
-			margin-top: 32px;
-		}
-	}
 }
 
-// « L'énergie des plantes ».
+// ---------- « L'énergie des plantes » ----------
 .band--energy {
 	@include curve-top(57px);
-	padding: 130px 24px 82px;
+	padding: fluid(64px, 130px) var(--gutter) fluid(56px, 82px);
 	text-align: center;
 
 	.energy__text {
 		max-width: 470px; // coupe le texte sur 5 lignes comme la maquette
-		margin: 47px auto 0;
-		font-size: 20px;
-	}
-
-	@include mobile {
-		padding: 72px 24px 64px;
-
-		.energy__text {
-			margin-top: 24px;
-			font-size: 18px;
-		}
+		margin: fluid(20px, 47px) auto 0;
 	}
 }
 
-// Les goûts.
+// ---------- Les goûts ----------
 .tastes {
-	padding: 58px 24px 29px;
+	padding: fluid(44px, 58px) var(--gutter) 29px;
 	text-align: center;
 
 	&__text {
 		margin-top: 7px;
-		font-size: 20px;
 	}
 
+	// 2 colonnes de 393 px ; une seule quand la place manque (sans point de rupture).
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(2, 393px);
-		gap: 40px 30px;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 393px));
+		gap: fluid(24px, 40px) 30px;
 		justify-content: center;
-		margin: 49px 0 47px;
-	}
-
-	@include medium {
-		&__grid {
-			grid-template-columns: minmax(0, 393px);
-			gap: 24px;
-		}
-	}
-
-	@include mobile {
-		padding-top: 48px;
-
-		&__text {
-			font-size: 18px;
-		}
-
-		&__grid {
-			margin: 32px 0;
-		}
+		margin: fluid(28px, 49px) 0 fluid(28px, 47px);
 	}
 }
 
@@ -145,9 +104,9 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 48px;
+		font-size: fluid(32px, 48px);
 		font-weight: 800;
-		line-height: normal;
+		line-height: 1.2;
 		color: var(--white);
 		text-transform: uppercase;
 		pointer-events: none;
@@ -155,73 +114,6 @@
 
 	&:hover &__img {
 		transform: scale(1.08);
-	}
-
-	@include mobile {
-		&__name {
-			font-size: 40px;
-		}
-	}
-}
-
-// Avis.
-.band--reviews {
-	@include curve-top(17.8px);
-	padding-top: 133px;
-
-	.reviews {
-		display: grid;
-		grid-template-columns: repeat(3, 345px);
-		gap: 68px;
-		justify-content: center;
-		margin: 84px 0 115px;
-		padding: 0 24px;
-	}
-
-	@include tablet {
-		.reviews {
-			grid-template-columns: minmax(0, 345px);
-			gap: 40px;
-		}
-	}
-
-	@include mobile {
-		padding-top: 72px;
-
-		.reviews {
-			margin: 48px 0 72px;
-		}
-	}
-}
-
-.review {
-	display: flex;
-	gap: 21px;
-
-	&__photo {
-		flex: none;
-		width: 126px;
-		height: 139px;
-		object-fit: contain;
-	}
-
-	&__body {
-		display: flex;
-		flex-direction: column;
-		padding-top: 18px;
-	}
-
-	&__name {
-		order: -1;
-		margin-bottom: 11px;
-		font-size: 30px;
-		font-weight: 700;
-		color: var(--green);
-	}
-
-	&__text {
-		width: 196px;
-		font-size: 16px;
 	}
 }
 
@@ -259,12 +151,12 @@
 
 .taste__cta {
 	position: absolute;
-	bottom: 18px;
+	bottom: fluid(12px, 18px);
 	left: 50%;
 	z-index: 1;
 	padding: 8px 16px;
 	border-radius: 999px;
-	font-size: 15px;
+	font-size: rem(15px);
 	font-weight: 700;
 	white-space: nowrap;
 	color: var(--black);
@@ -283,5 +175,57 @@
 	@media (hover: none) {
 		opacity: 1;
 		transform: translate(-50%, 0);
+	}
+}
+
+// ---------- Avis ----------
+.band--reviews {
+	@include curve-top(17.8px);
+	padding-top: fluid(64px, 133px);
+
+	// 3 avis côte à côte ; ils passent à la ligne quand la place manque, toujours centrés.
+	.reviews {
+		display: flex;
+		flex-wrap: wrap;
+		gap: fluid(40px, 68px);
+		justify-content: center;
+		margin: fluid(40px, 84px) 0 fluid(56px, 115px);
+		padding: 0 var(--gutter);
+	}
+}
+
+.review {
+	display: flex;
+	gap: fluid(14px, 21px);
+	width: 345px;
+	max-width: 100%;
+
+	&__photo {
+		flex: none;
+		width: fluid(96px, 126px);
+		aspect-ratio: 126 / 139;
+		height: auto;
+		object-fit: contain;
+	}
+
+	&__body {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		min-width: 0;
+		max-width: 196px;
+		padding-top: fluid(8px, 18px);
+	}
+
+	&__name {
+		order: -1; // le prénom s'affiche au-dessus de l'avis (il reste après dans le code : <figcaption>)
+		margin-bottom: 11px;
+		font-size: fluid(24px, 30px);
+		font-weight: 700;
+		color: var(--green);
+	}
+
+	&__text {
+		font-size: rem(16px);
 	}
 }

@@ -14,7 +14,7 @@ $planty_can_id    = (int) planty_mod( 'hero_can' );
 ?>
 
 <section class="hero">
-	<h1 class="hero__title" data-reveal><?php echo planty_lines( planty_mod( 'hero_title' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- échappé dans planty_lines(). ?></h1>
+	<h1 class="page-title hero__title" data-reveal><?php echo planty_lines( planty_mod( 'hero_title' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- échappé dans planty_lines(). ?></h1>
 
 	<div class="hero__stage">
 		<div class="hero__item hero__item--left" aria-hidden="true">
@@ -52,7 +52,7 @@ $planty_can_id    = (int) planty_mod( 'hero_can' );
 <section class="band band--energy">
 	<div class="band__inner">
 		<h2 class="title title--green-bold" data-reveal><?php echo esc_html( planty_mod( 'energy_title' ) ); ?></h2>
-		<p class="energy__text" data-reveal><?php echo esc_html( planty_mod( 'energy_text' ) ); ?></p>
+		<p class="text-lead energy__text" data-reveal><?php echo esc_html( planty_mod( 'energy_text' ) ); ?></p>
 	</div>
 </section>
 
@@ -61,7 +61,7 @@ $planty_tastes = function_exists( 'planty_get' ) ? planty_get( 'planty_gout' ) :
 ?>
 <section class="tastes" id="gouts">
 	<h2 class="title title--pink" data-reveal><?php echo esc_html( planty_mod( 'tastes_title' ) ); ?></h2>
-	<p class="tastes__text" data-reveal><?php echo esc_html( planty_mod( 'tastes_text' ) ); ?></p>
+	<p class="text-lead tastes__text" data-reveal><?php echo esc_html( planty_mod( 'tastes_text' ) ); ?></p>
 	<?php if ( $planty_tastes ) : ?>
 		<ul class="tastes__grid">
 			<?php foreach ( $planty_tastes as $planty_i => $planty_taste ) : ?>

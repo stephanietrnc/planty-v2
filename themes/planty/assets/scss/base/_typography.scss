@@ -1,10 +1,21 @@
 @use "../abstracts" as *;
 
-// Titres de section et texte de l'éditeur
+// Titres et textes. Toutes les tailles sont fluides : elles suivent la largeur
+// de l'écran entre 320 et 1440 px (fonction fluid()), sans saut.
 
-// Titres de section.
+// Grands titres de page (h1).
+.page-title {
+	font-size: fluid(20px, 38px);
+	font-weight: 800;
+	line-height: 1.2;
+	text-align: center;
+	text-transform: uppercase;
+	overflow-wrap: break-word;
+}
+
+// Titres de section (h2).
 .title {
-	font-size: 30px;
+	font-size: fluid(22px, 30px);
 	text-align: center;
 
 	&--green,
@@ -26,14 +37,17 @@
 	&--pink {
 		color: var(--pink-title);
 	}
-
-	@include mobile {
-		font-size: 24px;
-	}
 }
 
+// Texte courant de la maquette (20 px sur ordinateur).
+.text-lead {
+	font-size: fluid(17px, 20px);
+	line-height: 1.25;
+}
+
+// Texte saisi dans l'éditeur (mentions légales…).
 .prose {
-	font-size: 18px;
+	font-size: fluid(16px, 18px);
 	line-height: 1.6;
 
 	> * + * {

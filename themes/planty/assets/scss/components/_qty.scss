@@ -6,7 +6,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
+	gap: fluid(6px, 10px);
 	margin-top: 15px;
 
 	.order-taste__qty {
@@ -22,7 +22,7 @@
 		border: 1px solid var(--white);
 		border-radius: 50%;
 		font-family: var(--font);
-		font-size: 20px;
+		font-size: rem(20px);
 		line-height: 1;
 		color: var(--white);
 		background: transparent;

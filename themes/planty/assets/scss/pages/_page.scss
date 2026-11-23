@@ -5,18 +5,10 @@
 .page-simple {
 	max-width: 760px;
 	margin: 0 auto;
-	padding: 80px 24px 100px;
+	padding: fluid(48px, 80px) var(--gutter) fluid(64px, 100px);
 
 	&__title {
-		margin-bottom: 32px;
-		font-size: 38px;
-		font-weight: 800;
-		text-align: center;
-		text-transform: uppercase;
+		margin-bottom: fluid(24px, 32px);
 		color: var(--pink-title);
-
-		@include mobile {
-			font-size: 28px;
-		}
 	}
 }

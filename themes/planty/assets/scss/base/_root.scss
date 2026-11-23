@@ -1,16 +1,18 @@
-// Couleurs et polices de la maquette Figma, en variables CSS (modifiables sans recompiler).
+@use "../abstracts" as *;
+
+// Couleurs, polices et marges de la maquette Figma, en variables CSS (modifiables sans recompiler).
 
 :root {
-	--cream: #ece2da;      // fond crème
+	--cream: #ece2da;       // fond crème
 	--white: #fff;
 	--black: #000;
-	--green: #3b8e46;      // titres verts, fond de la page Commander
-	--pink-title: #d2776a; // titres roses
-	--pink-nav: #dc9f96;   // bouton « Commander » du menu
+	--green: #3b8e46;       // titres verts, fond de la page Commander
+	--pink-title: #d2776a;  // titres roses
+	--pink-nav: #dc9f96;    // bouton « Commander » du menu
 	--pink-button: #e0b9b4; // boutons
-	--red-hover: #c02e44;  // survol des boutons
+	--red-hover: #c02e44;   // survol des boutons
 	--font: "Syne", system-ui, sans-serif;
 	--font-qty: "Inter", system-ui, sans-serif;
-	--header-h: 80px;
+	--gutter: #{fluid(16px, 24px)}; // marge sur les côtés de l'écran
 	--ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }

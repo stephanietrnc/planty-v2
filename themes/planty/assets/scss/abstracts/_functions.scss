@@ -1,0 +1,20 @@
+@use "sass:math";
+
+// Fonctions Sass.
+
+// Convertit des px en rem (base 16 px) : les textes suivent la taille de police
+// choisie par le visiteur dans son navigateur.
+@function rem($px) {
+	@return math.div($px, 16px) * 1rem;
+}
+
+// Valeur fluide : vaut $min à 320 px de large, $max à 1440 px, et varie
+// en continu entre les deux (pas de saut à un point de rupture).
+// Ex. : font-size: fluid(24px, 38px);
+@function fluid($min, $max, $from: 320px, $to: 1440px) {
+	$slope: math.div($max - $min, $to - $from);
+	$base: $min - $slope * $from;
+	$vw: math.div(math.round($slope * 100 * 10000), 10000) * 1vw;
+	$base-rem: math.div(math.round(math.div($base, 16px) * 10000), 10000) * 1rem;
+	@return clamp(#{rem($min)}, #{$base-rem} + #{$vw}, #{rem($max)});
+}

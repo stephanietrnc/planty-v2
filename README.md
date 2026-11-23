@@ -21,7 +21,7 @@ Version statique du site : la navigation et le choix des quantités fonctionnent
 | **Avis** | Prénom, photo, texte |
 | **Équipe** | Prénom, photo, rôle |
 | **Pages** | Titre et texte d'introduction de « Nous rencontrer », mentions légales |
-| **Apparence › Personnaliser › Planty** | Textes des pages, image de la canette, rangée de canettes |
+| **Apparence › Personnaliser › Planty** | Textes des pages, image de la canette, rangée de canettes, mode démo (formulaires inactifs pour une version statique) |
 | **Apparence › Menus** | Menu principal (l'élément avec la classe CSS `bouton` devient le bouton rose) et pied de page |
 
 ## Structure
@@ -55,6 +55,8 @@ npm run sass:watch   # recompile à chaque enregistrement
 ## Choix techniques
 
 - Thème sans constructeur de pages : le client remplit des champs, la mise en forme suit.
+- Responsive de 320 à 1440 px : tailles de texte et espacements fluides (fonction Sass `fluid()` qui génère des `clamp()`), textes en `rem` pour suivre la taille de police du navigateur. Les points de rupture ne servent qu'aux changements de mise en page.
+- Accessibilité : navigation au clavier avec focus visible, lien d'évitement, libellés de champs et d'erreurs reliés, textes pour les lecteurs d'écran.
 - Formulaires sans extension tierce : vérification des champs, jeton de sécurité, piège à robots, envoi avec `wp_mail()`.
-- Polices Syne et Inter hébergées sur le site, images WebP.
+- Polices Syne et Inter hébergées sur le site, images WebP, `<head>` allégé.
 - Animations désactivées si le visiteur a demandé moins de mouvement (`prefers-reduced-motion`).

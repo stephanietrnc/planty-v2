@@ -13,7 +13,7 @@ while ( have_posts() ) :
 	the_post();
 	?>
 	<article class="page-simple">
-		<h1 class="page-simple__title"><?php the_title(); ?></h1>
+		<h1 class="page-title page-simple__title"><?php the_title(); ?></h1>
 		<div class="prose"><?php the_content(); ?></div>
 	</article>
 	<?php

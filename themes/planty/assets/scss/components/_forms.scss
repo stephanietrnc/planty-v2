@@ -18,19 +18,19 @@
 .field {
 	&__label {
 		display: block;
-		margin-bottom: 13px;
-		font-size: 20px;
+		margin-bottom: fluid(8px, 13px);
+		font-size: fluid(17px, 20px);
 	}
 
 	&__input {
 		display: block;
 		width: 100%;
-		height: 71px;
+		height: fluid(56px, 71px);
 		padding: 0 20px;
 		border: 2px solid transparent;
 		border-radius: 7px;
 		font-family: var(--font);
-		font-size: 18px;
+		font-size: fluid(16px, 18px); // 16 px minimum : évite le zoom automatique sur iPhone
 		color: var(--black);
 		background: var(--white);
 		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
@@ -47,7 +47,7 @@
 	}
 
 	textarea.field__input {
-		height: 237px;
+		height: fluid(180px, 237px);
 		padding: 18px 20px;
 		resize: vertical;
 	}
@@ -57,7 +57,7 @@
 		margin-top: 8px;
 		padding: 4px 10px;
 		border-radius: 5px;
-		font-size: 15px;
+		font-size: rem(15px);
 		color: var(--red-hover);
 		background: var(--white);
 	}
@@ -67,7 +67,7 @@
 	margin-bottom: 24px;
 	padding: 16px 20px;
 	border-radius: 7px;
-	font-size: 17px;
+	font-size: fluid(16px, 17px);
 	line-height: 1.4;
 	background: var(--white);
 

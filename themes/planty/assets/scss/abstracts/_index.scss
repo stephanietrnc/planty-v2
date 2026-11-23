@@ -1,3 +1,4 @@
 // Point d'entrée des abstracts : chaque fichier fait @use "../abstracts" as *;
 @forward "variables";
+@forward "functions";
 @forward "mixins";
