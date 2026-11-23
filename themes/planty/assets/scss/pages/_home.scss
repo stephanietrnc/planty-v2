@@ -76,13 +76,15 @@
 		margin-top: 7px;
 	}
 
-	// 2 colonnes de 393 px ; une seule quand la place manque (sans point de rupture).
+	// 2 colonnes de 393 px (largeur max 816 px) ; une seule quand la place manque
+	// (sans point de rupture).
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 393px));
 		gap: fluid(24px, 40px) 30px;
 		justify-content: center;
-		margin: fluid(28px, 49px) 0 fluid(28px, 47px);
+		max-width: 816px;
+		margin: fluid(28px, 49px) auto fluid(28px, 47px);
 	}
 }
 
