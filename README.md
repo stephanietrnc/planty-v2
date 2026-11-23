@@ -58,5 +58,5 @@ npm run sass:watch   # recompile à chaque enregistrement
 - Responsive de 320 à 1440 px : tailles de texte et espacements fluides (fonction Sass `fluid()` qui génère des `clamp()`), textes en `rem` pour suivre la taille de police du navigateur. Les points de rupture ne servent qu'aux changements de mise en page.
 - Accessibilité : navigation au clavier avec focus visible, lien d'évitement, libellés de champs et d'erreurs reliés, textes pour les lecteurs d'écran.
 - Formulaires sans extension tierce : vérification des champs, jeton de sécurité, piège à robots, envoi avec `wp_mail()`.
-- Polices Syne et Inter hébergées sur le site, images WebP, `<head>` allégé.
+- Éco-conception : polices Syne et Inter hébergées sur le site, images WebP, `<head>` allégé. Note A sur [EcoIndex](https://www.ecoindex.fr/) (88/100, accueil de 216 Ko).
 - Animations désactivées si le visiteur a demandé moins de mouvement (`prefers-reduced-motion`).
